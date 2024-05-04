@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:background="@drawable/custom_fragment">
+
+    <TextView
+        android:id="@+id/info_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Информация о приложении:\n\nМобильная информационно-справочная система Авиарейсы аэропорта.\n\nПриложение имеет две роли User и Admin.\n\nВся информация в приложении вымышлена.\n\nПриложении находится в бета-версии."
+        android:padding="16dp"/>
+
+    <Button
+        android:id="@+id/close_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Закрыть"
+        android:backgroundTint="@color/brick"/>
+
+</LinearLayout>
