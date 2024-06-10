@@ -19,7 +19,7 @@
         android:layout_height="wrap_content"
         android:id="@+id/detailName"
         android:layout_marginTop="14dp"
-        android:text="Рейс:"
+        android:text="Рейс №"
         android:textSize="24sp"
         android:textColor="@color/brick"
         android:textStyle="bold"

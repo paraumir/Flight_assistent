@@ -15,13 +15,11 @@ public class instructionFragment extends Fragment {
     private FragmentInstructionBinding binding;
 
     public instructionFragment() {
-        // Required empty public constructor
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
         binding = FragmentInstructionBinding.inflate(inflater, container, false);
         View view = binding.getRoot();
 

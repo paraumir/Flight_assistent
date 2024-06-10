@@ -7,16 +7,21 @@ import android.os.Bundle;
 
 import com.example.kurs.databinding.ActivityDetailedBinding;
 import com.bumptech.glide.Glide;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
 
 public class DetailedActivity extends AppCompatActivity {
 
     ActivityDetailedBinding binding;
+    FirebaseStorage storage;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         binding = ActivityDetailedBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
+
+        storage = FirebaseStorage.getInstance();
 
         Intent intent = getIntent();
         if (intent != null){
@@ -27,18 +32,28 @@ public class DetailedActivity extends AppCompatActivity {
             String imageUrl = intent.getStringExtra("image");
             String status = intent.getStringExtra("status");
 
-            // Set data to views
-            binding.detailName.setText(name);
+            binding.detailName.setText("Рейс №" + name);
             binding.detailTime.setText(time);
             binding.detailIngredients.setText(road);
             binding.detailDesc.setText(inf);
             binding.detailStatus.setText(status);
 
-            // Load image from URL using Glide
-            Glide.with(this)
-                    .load(imageUrl)
-                    .into(binding.detailImage);
+            if (imageUrl != null) {
+                if (imageUrl.startsWith("gs://")) {
+                    // Handle gs:// URL using Firebase Storage
+                    StorageReference storageReference = storage.getReferenceFromUrl(imageUrl);
+                    storageReference.getDownloadUrl().addOnSuccessListener(uri -> {
+                        Glide.with(this)
+                                .load(uri)
+                                .into(binding.detailImage);
+                    }).addOnFailureListener(e -> {
+                    });
+                } else {
+                    Glide.with(this)
+                            .load(imageUrl)
+                            .into(binding.detailImage);
+                }
+            }
         }
     }
 }
-

@@ -26,6 +26,7 @@ public class ListData {
     public void setstatus(String status) {this.status = status;}
     public String getFlight() {return Flight;}
     public void setFlight(String Flight) {this.Flight = Flight;}
+
     public String getName() {
         return name;
     }

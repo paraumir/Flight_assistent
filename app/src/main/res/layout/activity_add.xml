@@ -15,7 +15,7 @@
         android:id="@+id/nameEditText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Рейс"
+        android:hint="Номер Рейса"
         android:layout_margin="16dp"/>
 
     <EditText
@@ -49,13 +49,14 @@
         android:layout_below="@id/statusEditText"
         android:layout_margin="16dp"/>
 
-    <EditText
-        android:id="@+id/imageUrlEditText"
-        android:layout_width="match_parent"
+    <Button
+        android:id="@+id/imageUrlButton"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:hint="URL ссылка на лого"
+        android:text="Выбрать изображение"
         android:layout_below="@id/infoEditText"
-        android:layout_margin="16dp"/>
+        android:layout_margin="16dp"
+        android:backgroundTint="@color/brick"/>
 
 
     <Button
@@ -63,7 +64,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Добавить"
-        android:layout_below="@id/imageUrlEditText"
+        android:layout_below="@id/imageUrlButton"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="24dp"
         android:backgroundTint="@color/brick"/>

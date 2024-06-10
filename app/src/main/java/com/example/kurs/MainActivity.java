@@ -7,6 +7,8 @@ import androidx.fragment.app.FragmentTransaction;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Toast;
@@ -28,8 +30,9 @@ public class MainActivity extends AppCompatActivity {
     private ListAdapter listAdapter;
     private DatabaseReference databaseReference;
     private final String LOG_TAG = "myLogs";
-    private String admin = "";
+    private String admin = "qQlmqNGbpEgTrpH05YDtPCcRHSJ3";
     private Boolean isAdmin;
+    private ArrayList<ListData> dataArrayList = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -82,7 +85,7 @@ public class MainActivity extends AppCompatActivity {
         databaseReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                ArrayList<ListData> dataArrayList = new ArrayList<>();
+                dataArrayList.clear();
                 for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
                     ListData listData = snapshot.getValue(ListData.class);
                     if (listData != null) {
@@ -114,6 +117,26 @@ public class MainActivity extends AppCompatActivity {
                 intent.putExtra("image", selectedFlight.getImageUrl());
                 intent.putExtra("status", selectedFlight.getstatus());
                 startActivity(intent);
+            }
+        });
+
+        // Implement search functionality
+        binding.searchEditText.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+                // Do nothing
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                if (listAdapter != null) {
+                    listAdapter.filter(s.toString());
+                }
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                // Do nothing
             }
         });
     }

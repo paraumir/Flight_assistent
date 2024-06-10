@@ -61,16 +61,26 @@
             android:drawableRight="@drawable/baseline_book_24"/>
     </LinearLayout>
 
+    <EditText
+        android:id="@+id/searchEditText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/button_panel"
+        android:background="@color/silver"
+        android:hint="Поиск по номеру рейса"
+        android:padding="8dp"
+        app:layout_constraintTop_toBottomOf="@+id/button_panel" />
+
     <ListView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:id="@+id/listview"
         android:scrollbars="vertical"
-        android:layout_marginTop="70dp"
+        android:layout_marginTop="110dp"
         tools:listitem="@layout/list_item"
         android:divider="@android:color/transparent"
         android:dividerHeight="10.0sp"
-        android:layout_below="@id/button_panel"/>
+        android:layout_below="@id/searchEditText"/>
 
     <FrameLayout
         android:id="@+id/fragment_container"
